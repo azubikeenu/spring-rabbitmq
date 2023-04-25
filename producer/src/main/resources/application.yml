@@ -1,0 +1,42 @@
+#DEFAULT CONFIGURATION FOR RABBITMQ
+
+spring:
+  rabbitmq:
+    addresses: localhost:5672
+    username : guest
+    password:  guest
+
+
+
+#DEFAULT EXCHANGE CONFIGURATION
+default:
+  queue:
+    name: q.default-queue
+
+
+# DIRECT EXCHANGE CONFIGURATION
+direct:
+  exchange:
+    name: x.direct-exchange
+    routing_key:
+      one: routing-key-one
+      two: routing-key-two
+  queue :
+    name :
+      queue_one: q.direct-one
+      queue_two: q.direct-two
+
+
+## FANOUT EXCHANGE CONFIGURATION
+fanout:
+  exchange:
+    name : x-fanout.exchange
+  queue:
+    name:
+      queue_one : q.fanout-one
+      queue_two: q.fanout-two
+
+
+server:
+  port: 8080
+

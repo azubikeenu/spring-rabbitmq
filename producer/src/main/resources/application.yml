@@ -37,6 +37,11 @@ fanout:
       queue_two: q.fanout-two
 
 
+## QUEUE WITH TTL
+ttl:
+  queue:
+    name: q.ttl.test
+
 server:
   port: 8080
 

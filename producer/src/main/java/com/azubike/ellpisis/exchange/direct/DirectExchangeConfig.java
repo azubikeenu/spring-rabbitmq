@@ -29,23 +29,23 @@ public class DirectExchangeConfig {
 
     private final AmqpAdmin amqpAdmin;
 
-    Queue createDirectQueueOne() {
+   private Queue createDirectQueueOne() {
         return new Queue(queueOne, true, false, false);
     }
 
-    Queue createDirectQueueTwo() {
+    private Queue createDirectQueueTwo() {
         return new Queue(queueTwo, true, false, false);
     }
 
-    DirectExchange createDirectExchange() {
+    private DirectExchange createDirectExchange() {
         return new DirectExchange(exchangeName, true, false);
     }
 
-    Binding createBindingOne() {
+   private  Binding createBindingOne() {
         return BindingBuilder.bind(createDirectQueueOne()).to(createDirectExchange()).with(routingKeyOne);
     }
 
-    Binding createBindingTwo() {
+    private Binding createBindingTwo() {
         return BindingBuilder.bind(createDirectQueueTwo()).to(createDirectExchange()).with(routingKeyTwo);
     }
 

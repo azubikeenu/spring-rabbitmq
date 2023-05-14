@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 @RestController
@@ -24,7 +25,7 @@ public class DirectController {
 
     @GetMapping("/{key}")
     public ResponseEntity<String> publishMessage(@PathVariable String key){
-        QueueObject queueObject = QueueObject.builder().type("Direct exchange").build();
+        QueueObject queueObject = QueueObject.builder().type("Direct exchange").time(LocalDateTime.now()).build();
         final String routingKey = Objects.equals(key, "routing-key-one") ? routingKeyOne : routingKeyTwo;
         directExchange.convertAndSend(routingKey, queueObject);
         return ResponseEntity.ok("Message successfully sent");
